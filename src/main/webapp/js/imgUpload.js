@@ -25,6 +25,7 @@ $(function () {
             success: function(result) {
               var imgId = result.data.id;
               var imgLink = result.data.link;
+              console.log(imgLink);
               $("#uploadResult").prepend($('<img>',{id:imgId, src:imgLink}));
             }
           });
