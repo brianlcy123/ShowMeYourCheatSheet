@@ -7,7 +7,8 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.service.NextUserIdService;
+import com.example.demo.service.NextIdService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
     @Autowired
-    NextUserIdService userIdService;
+    NextIdService userIdService;
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<User> register(@RequestBody User user){
@@ -35,5 +36,11 @@ public class UserController {
         user.setId(String.valueOf(nextId));
         userRepository.insert(user);
         return new ResponseEntity<User>(user, HttpStatus.CREATED);
-    } 
+    }
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<User>> find(){
+        List<User> users = userRepository.findAll();
+        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+    }
+    
 }

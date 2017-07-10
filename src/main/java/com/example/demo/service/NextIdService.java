@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
  * @author Owner
  */
 @Service
-public class NextUserIdService {
+public class NextIdService {
     @Autowired
     private MongoOperations mongo;
     public int getNextUserId(String seqName){

@@ -5,6 +5,7 @@
  */
 package com.example.demo.repository;
 
+import com.example.demo.model.Tag;
 import com.example.demo.model.User;
 import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -15,8 +16,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * @author Owner
  */
 @RepositoryRestResource
-public interface UserRepository extends MongoRepository<User, String>{
-    User insert(User user);
+public interface TagRepository extends MongoRepository<Tag, String>{
+    Tag insert(Tag tag);
     
+    Tag findByTagName(String tagName);
     
 }

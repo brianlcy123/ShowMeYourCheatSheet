@@ -5,7 +5,7 @@
  */
 package com.example.demo.repository;
 
-import com.example.demo.model.User;
+import com.example.demo.model.Image;
 import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -15,8 +15,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * @author Owner
  */
 @RepositoryRestResource
-public interface UserRepository extends MongoRepository<User, String>{
-    User insert(User user);
-    
-    
+public interface ImageRepository extends MongoRepository<Image, String>{
+    Image insert(Image image);
+    List<Image> findFirst5ByOrderByCreateTimeStampDesc();
 }
